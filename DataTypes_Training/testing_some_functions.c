@@ -4,7 +4,6 @@
 
 void swap(int x, int y);
 void pointers_swap(int *x, int *y);
-void malloc_swap(int x, int y);
 
 int main(void)
 {
