@@ -9,34 +9,29 @@ typedef struct node
 }
 node;
 
-struct node node1;
-
-
 bool search(int n, node *list);
 
 int main(void)
 {
-    node1.n = 5;
-    node1.next = malloc(sizeof(node));
-    node1.next->n = 10;
-    node1.next->next = malloc(sizeof(node));
-    node1.next->next->n = 15;
+    // create first and second nodes
+    node *first = malloc(sizeof(node));
+    if (first == NULL)
+        exit(1);
+            
+    node *second = malloc(sizeof(node));
+    if (second == NULL)
+        exit(2);
+        
+    first->n = 10;
+    first->next = second;
+
+    second->n = 100;
+    second->next = NULL;
     
-    while (true)
-    {
-        int user_input = get_int();
-        if (user_input < 0)
-        {
-            printf("Enter the positive number:");
-            return 5;
-        }
-        
-        
-        if (search(user_input, &node1))
-            printf("%d is in the list\n", user_input);
-        else
-            printf("Not in the list\n");
-    }    
+    if (search(900, first))
+        printf("Found it!\n");
+    else
+        printf("Element is missing =(\n");
 }
 
 bool search(int n, node *list)
